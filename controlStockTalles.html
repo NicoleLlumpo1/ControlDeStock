@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ===== CONFIGURACIÓN DE LA PÁGINA ===== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Club de Rugby Ezeiza · Control de stock por talle</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="estilosControlStockTalles.css">
+</head>
+<body class="cuerpoPagina">
+  <div class="contenedorPagina">
+
+    <!-- ===== ENCABEZADO DEL CLUB ===== -->
+    <header class="encabezadoClub">
+      <img class="logoClub" id="imagenLogoClub" alt="Logo del club" hidden>
+      <div class="bloqueTituloClub">
+        <h1 class="tituloClub" id="textoNombreClub"></h1>
+        <p class="subtituloClub">Control de stock por talle</p>
+      </div>
+      <button class="boton botonSecundario botonChico botonEncabezado" id="botonCargarDatosEjemplo">Cargar datos de ejemplo</button>
+    </header>
+
+    <!-- ===== ALERTAS DE STOCK CRÍTICO ===== -->
+    <div id="contenedorAlertasCriticas"></div>
+
+    <!-- ===== NAVEGACIÓN POR PESTAÑAS ===== -->
+    <nav class="navegacion" role="tablist" id="navegacionPestanas">
+      <button class="botonPestana" role="tab" data-pestana="stock" aria-selected="true">Stock</button>
+      <button class="botonPestana" role="tab" data-pestana="reporte" aria-selected="false">Reporte</button>
+      <button class="botonPestana" role="tab" data-pestana="ventas" aria-selected="false">Ventas</button>
+      <button class="botonPestana" role="tab" data-pestana="estadisticas" aria-selected="false">Estadísticas</button>
+      <button class="botonPestana" role="tab" data-pestana="administrar" aria-selected="false">Administrar</button>
+    </nav>
+
+    <!-- ===== CONTENIDO DE LA PESTAÑA ACTIVA ===== -->
+    <main id="vistaPrincipal"></main>
+  </div>
+
+  <!-- ===== DIÁLOGO PARA REGISTRAR UNA VENTA ===== -->
+  <dialog class="dialogoVenta" id="dialogoRegistrarVenta">
+    <h3 class="tituloDialogoVenta" id="tituloDialogoVenta"></h3>
+    <p class="textoSecundario" id="textoStockDialogoVenta"></p>
+    <div class="filaFormulario">
+      <label class="etiquetaCampo">Cantidad vendida
+        <input class="campoTexto" type="number" id="campoCantidadVendida" min="1" value="1">
+      </label>
+    </div>
+    <div class="botonesDialogoVenta">
+      <button class="boton botonSecundario" id="botonCancelarVenta">Cancelar</button>
+      <button class="boton" id="botonConfirmarVenta">Registrar venta</button>
+    </div>
+  </dialog>
+
+  <!-- ===== NOTIFICACIONES EMERGENTES ===== -->
+  <div class="zonaNotificaciones" id="contenedorNotificaciones" aria-live="polite"></div>
+
+  <script src="logicaControlStockTalles.js"></script>
+</body>
+</html>

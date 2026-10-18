@@ -1,0 +1,177 @@
+/* ===== VARIABLES DE COLOR (tema claro) ===== */
+:root {
+  --colorFondo: #f1f1ef;
+  --colorSuperficie: #ffffff;
+  --colorTexto: #1f1e1b;
+  --colorTextoSecundario: #5f5d57;
+  --colorBorde: #dcdad5;
+  --colorAcento: #ee6c2d;
+  --colorTextoSobreAcento: #1f1e1b;
+  --colorPrincipal: #1f1e1b;
+  --colorStockNormal: #e7f4ea;
+  --colorTextoStockNormal: #1c6b34;
+  --colorStockBajo: #fff1d6;
+  --colorTextoStockBajo: #8a5200;
+  --colorStockCritico: #fde3e0;
+  --colorTextoStockCritico: #a3200f;
+  --colorStockAgotado: #e9e8e4;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ===== VARIABLES DE COLOR (tema oscuro) ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colorFondo: #141311;
+    --colorSuperficie: #1f1e1b;
+    --colorTexto: #f4f2ee;
+    --colorTextoSecundario: #aaa69d;
+    --colorBorde: #37352f;
+    --colorStockNormal: #173a25;
+    --colorTextoStockNormal: #7fdc9d;
+    --colorStockBajo: #43320f;
+    --colorTextoStockBajo: #ffcf7a;
+    --colorStockCritico: #4a1d19;
+    --colorTextoStockCritico: #ff9d90;
+    --colorStockAgotado: #2c2a26;
+  }
+}
+
+/* ===== BASE DE LA PÁGINA ===== */
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+.cuerpoPagina {
+  margin: 0;
+  background: var(--colorFondo);
+  color: var(--colorTexto);
+  font: 16px/1.45 "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.contenedorPagina { max-width: 1080px; margin: 0 auto; padding: 16px; }
+h1, h2, h3, .tituloPanel, .botonPestana {
+  font-family: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  letter-spacing: .01em;
+}
+.textoSecundario { color: var(--colorTextoSecundario); font-size: .9rem; }
+.textoAyuda { font-size: .88rem; color: var(--colorTextoSecundario); margin: 0 0 10px; }
+.mensajeVacio { text-align: center; color: var(--colorTextoSecundario); padding: 36px 12px; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--colorAcento); outline-offset: 2px; }
+
+/* ===== ENCABEZADO DEL CLUB ===== */
+.encabezadoClub {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  background: var(--colorPrincipal); color: #fff;
+  border-radius: 14px; border-bottom: 5px solid var(--colorAcento);
+  padding: 14px 18px; margin-bottom: 16px;
+}
+.logoClub { display: block; height: 68px; width: auto; padding: 3px; border-radius: 10px; background: #fff; }
+.logoClub[hidden] { display: none; }
+.bloqueTituloClub { flex: 1; }
+.tituloClub { margin: 0; font-size: 2rem; font-weight: 800; text-transform: uppercase; line-height: 1; }
+.subtituloClub { margin: 4px 0 0; color: #d4d0c8; font-size: .95rem; }
+.botonEncabezado { color: #fff; border-color: rgba(255, 255, 255, .55); }
+
+/* ===== BOTONES ===== */
+.boton {
+  background: var(--colorAcento); color: var(--colorTextoSobreAcento);
+  border: 0; border-radius: 8px; padding: 9px 14px;
+  font: inherit; font-weight: 700; cursor: pointer;
+}
+.botonSecundario { background: transparent; color: var(--colorTexto); border: 1.5px solid var(--colorBorde); }
+.botonPeligro { background: transparent; color: var(--colorTextoStockCritico); border: 1.5px solid var(--colorTextoStockCritico); }
+.botonChico { padding: 5px 9px; font-size: .85rem; }
+
+/* ===== NAVEGACIÓN POR PESTAÑAS ===== */
+.navegacion { display: flex; gap: 4px; border-bottom: 2px solid var(--colorBorde); margin-bottom: 16px; overflow-x: auto; }
+.botonPestana {
+  background: none; border: 0; color: var(--colorTextoSecundario);
+  font-size: 1.2rem; font-weight: 700; text-transform: uppercase;
+  padding: 10px 14px; cursor: pointer; white-space: nowrap;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.botonPestana[aria-selected="true"] { color: var(--colorTexto); border-bottom-color: var(--colorAcento); }
+
+/* ===== CAMPOS DE FORMULARIO ===== */
+.campoTexto, .campoFiltro {
+  font: inherit; color: var(--colorTexto); background: var(--colorSuperficie);
+  border: 1.5px solid var(--colorBorde); border-radius: 8px; padding: 8px 10px; min-width: 0;
+}
+.filtrosListado { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.campoFiltro { flex: 1 1 150px; }
+.filaFormulario { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.etiquetaCampo { flex: 1 1 180px; display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
+.filaTalleEditable { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+.etiquetaTalle { width: 64px; font-weight: 700; }
+.campoStockTalle { width: 90px; }
+.filaAccionesTalles { align-items: center; }
+.campoTalleNuevo { width: 110px; flex: none; }
+.filaBotonesFormulario { display: flex; gap: 8px; margin-top: 12px; }
+.tituloSeccionTalles { margin-bottom: 8px; font-weight: 600; }
+
+/* ===== ALERTAS DE STOCK CRÍTICO ===== */
+.alertaStockCritico { background: var(--colorStockCritico); color: var(--colorTextoStockCritico); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-weight: 600; }
+.listaAlertaStockCritico { margin: 6px 0 0; padding-left: 18px; font-weight: 500; }
+
+/* ===== TARJETAS DE PRODUCTO ===== */
+.cuadriculaProductos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.tarjetaProducto { background: var(--colorSuperficie); border: 1px solid var(--colorBorde); border-top: 4px solid var(--colorAcento); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.tarjetaProductoSuperior { display: flex; gap: 12px; padding: 12px; }
+.nombreProducto { margin: 0 0 2px; font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
+.miniaturaProducto { width: 84px; height: 84px; border-radius: 8px; object-fit: cover; flex: none; }
+.miniaturaProductoVacia { background: var(--colorStockAgotado); display: grid; place-items: center; font-size: 2rem; font-weight: 800; color: var(--colorTextoSecundario); }
+.miniaturaChica { width: 40px; height: 40px; font-size: 1rem; }
+.filaMiniaturaYBoton { display: flex; gap: 10px; align-items: center; }
+.contenedorChipsTalles { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 12px; }
+
+/* ===== CHIPS DE TALLE ===== */
+.chipTalle { border: 0; border-radius: 10px; padding: 6px 9px; font: inherit; cursor: pointer; text-align: center; min-width: 56px; background: var(--colorStockNormal); color: var(--colorTextoStockNormal); }
+.etiquetaChipTalle { display: block; font-size: .8rem; line-height: 1.1; }
+.cantidadChipTalle { font-size: 1.15rem; font-weight: 800; }
+.chipTalleBajo { background: var(--colorStockBajo); color: var(--colorTextoStockBajo); }
+.chipTalleCritico { background: var(--colorStockCritico); color: var(--colorTextoStockCritico); outline: 2px solid var(--colorTextoStockCritico); }
+.chipTalleAgotado { background: var(--colorStockAgotado); color: var(--colorTextoSecundario); cursor: not-allowed; }
+.chipTalleInformativo { display: inline-block; margin: 2px; cursor: default; min-width: 46px; }
+
+/* ===== TABLAS ===== */
+.contenedorTabla { overflow-x: auto; background: var(--colorSuperficie); border: 1px solid var(--colorBorde); border-radius: 14px; }
+.tablaDatos { border-collapse: collapse; width: 100%; font-size: .92rem; }
+.tablaDatos th, .tablaDatos td { padding: 8px 10px; border-bottom: 1px solid var(--colorBorde); text-align: left; white-space: nowrap; }
+.tablaDatos th { color: var(--colorTextoSecundario); font-weight: 600; }
+.celdaNumero { text-align: center; font-weight: 700; }
+.celdaChipsTalles { white-space: normal; }
+.celdaAcciones { text-align: right; }
+.botonDescargarReporte { margin-top: 12px; }
+
+/* ===== PANELES Y ESTADÍSTICAS ===== */
+.panel { background: var(--colorSuperficie); border: 1px solid var(--colorBorde); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.tituloPanel { margin: 0 0 8px; font-size: 1.2rem; font-weight: 700; }
+.grillaDosColumnas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-bottom: 14px; }
+.filaBarra { display: grid; grid-template-columns: minmax(80px, 1.3fr) 3fr auto; gap: 8px; align-items: center; margin: 6px 0; font-size: .9rem; }
+.pistaBarra { width: 100%; height: 16px; display: block; border-radius: 6px; overflow: hidden; }
+.fondoPistaBarra { fill: var(--colorStockAgotado); }
+.rellenoBarra { fill: var(--colorAcento); }
+.contenedorTorta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.tortaGrafico { width: 140px; height: 140px; flex: none; }
+.leyenda { display: flex; flex-direction: column; gap: 4px; font-size: .88rem; }
+.leyendaHorizontal { flex-direction: row; flex-wrap: wrap; gap: 6px 12px; margin-top: 8px; }
+.itemLeyenda { display: inline-flex; align-items: center; gap: 6px; }
+.cuadroColorLeyenda { width: 11px; height: 11px; }
+.graficoLineaMensual { width: 100%; max-width: 560px; }
+.lineaEvolucion { fill: none; stroke: var(--colorAcento); stroke-width: 3; }
+.puntoEvolucion { fill: var(--colorAcento); }
+.textoValorGrafico { fill: var(--colorTexto); font-size: 11px; text-anchor: middle; }
+.textoMesGrafico { fill: var(--colorTextoSecundario); font-size: 11px; text-anchor: middle; }
+.alertaReposicion, .alertaBajaRotacion { padding: 8px 12px; border-radius: 8px; margin-top: 6px; }
+.alertaReposicion { background: var(--colorStockBajo); color: var(--colorTextoStockBajo); }
+.alertaBajaRotacion { background: var(--colorStockAgotado); color: var(--colorTexto); }
+
+/* ===== DIÁLOGO DE VENTA ===== */
+.dialogoVenta { border: 0; border-radius: 12px; background: var(--colorSuperficie); color: var(--colorTexto); padding: 18px; width: min(92vw, 340px); }
+.dialogoVenta::backdrop { background: rgba(0, 0, 0, .45); }
+.tituloDialogoVenta { margin-top: 0; font-size: 1.3rem; }
+.botonesDialogoVenta { display: flex; gap: 8px; justify-content: flex-end; }
+
+/* ===== NOTIFICACIONES EMERGENTES ===== */
+.zonaNotificaciones { position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 8px; z-index: 20; max-width: min(92vw, 360px); }
+.notificacion { background: var(--colorTexto); color: var(--colorFondo); padding: 10px 14px; border-radius: 10px; font-weight: 600; }
+.notificacionCritica { background: var(--colorTextoStockCritico); color: #fff; }
